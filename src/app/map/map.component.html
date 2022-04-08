@@ -1,0 +1,14 @@
+<p>Tap any icon</p>
+
+<google-map height="400px" width="100%" [center]="center" [zoom]="zoom">
+    <map-marker
+        *ngFor="let drinksEvent of drinksEvents"
+        [position]="{
+            lat: drinksEvent.location.latitude,
+            lng: drinksEvent.location.longitude
+        }"
+        [options]="markerOptions"
+        [clickable]="true"
+        (mapClick)="markerClicked(drinksEvent)"
+    ></map-marker>
+</google-map>

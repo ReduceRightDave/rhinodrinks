@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>{{ eventData.title }}</h2>
+
+<div mat-dialog-content>
+    <ul>
+        <li>
+            <img
+                class="drinks-icon"
+                [src]="getIconPath(eventData.type)"
+                [alt]="eventData.type | titlecase"
+            />
+            {{ eventData.type | titlecase }}
+        </li>
+        <li>{{ eventData.time | date: "dd/MM/yy h:mm a" }}</li>
+        <li>{{ eventData.location.name }}</li>
+    </ul>
+
+    <h3 class="comments-heading" *ngIf="eventData.comments.length">Comments</h3>
+    <ul>
+        <li *ngFor="let comment of eventData.comments">
+            {{ comment.user.name }}: {{ comment.message }}
+        </li>
+    </ul>
+</div>
+
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
